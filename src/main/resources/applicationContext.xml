@@ -6,15 +6,11 @@
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/mvc
-        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
     <context:annotation-config/>
-
-    <mvc:annotation-driven/>
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="org.sqlite.JDBC" />
@@ -28,12 +24,12 @@
     </bean>
 
     <bean id="blogJDBCTemplate"
-          class="by.itibo.template.UserJDBCTemplate">
+          class="by.itibo.template.BlogJDBCTemplate">
         <property name="dataSource"  ref="dataSource" />
     </bean>
 
     <bean id="commentJDBCTemplate"
-          class="by.itibo.template.UserJDBCTemplate">
+          class="by.itibo.template.CommentJDBCTemplate">
         <property name="dataSource"  ref="dataSource" />
     </bean>
 
