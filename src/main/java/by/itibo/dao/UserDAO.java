@@ -9,7 +9,7 @@ public interface UserDAO {
 
     void setDataSource(DataSource ds);
 
-    void create(String name, Integer age);
+    void create(String name, String surname, String login, String password);
 
     User getUser(Integer id);
 
@@ -17,6 +17,6 @@ public interface UserDAO {
 
     void delete(Integer id);
 
-    void update(Integer id, Integer age);
+    void update(Integer id, String name);
 
 }

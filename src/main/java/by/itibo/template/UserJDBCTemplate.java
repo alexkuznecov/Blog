@@ -18,11 +18,11 @@ public class UserJDBCTemplate implements UserDAO {
         this.jdbcTemplateObject = new JdbcTemplate(dataSource);
     }
 
-    public void create(String name, Integer age) {
-        String SQL = "insert into User (name, age) values (?, ?)";
+    public void create(String name, String surname, String login, String password) {
+        String SQL = "insert into User (name, surname, login, password) values (?, ?, ?, ?)";
 
-        jdbcTemplateObject.update( SQL, name, age);
-        System.out.println("Created Record Name = " + name + " Age = " + age);
+        jdbcTemplateObject.update( SQL, name, surname, login, password);
+        System.out.println("Created Record Name = " + name + " " + surname + " " + login);
         return;
     }
 
@@ -47,9 +47,9 @@ public class UserJDBCTemplate implements UserDAO {
         return;
     }
 
-    public void update(Integer id, Integer age) {
-        String SQL = "update User set age = ? where id = ?";
-        jdbcTemplateObject.update(SQL, age, id);
+    public void update(Integer id, String name) {
+        String SQL = "update User set name = ? where id = ?";
+        jdbcTemplateObject.update(SQL, name, id);
         System.out.println("Updated Record with ID = " + id );
         return;
     }

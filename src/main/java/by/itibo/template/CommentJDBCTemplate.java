@@ -18,11 +18,11 @@ public class CommentJDBCTemplate implements CommentDAO {
         this.jdbcTemplateObject = new JdbcTemplate(dataSource);
     }
 
-    public void create(String name, Integer age) {
-        String SQL = "insert into Comment (name, age) values (?, ?)";
+    public void create(String text, Integer authorId, Integer blogId) {
+        String SQL = "insert into Comment (text, authorId, blogId) values (?, ?, ?)";
 
-        jdbcTemplateObject.update( SQL, name, age);
-        System.out.println("Created Record Name = " + name + " Age = " + age);
+        jdbcTemplateObject.update(SQL, text, authorId, blogId);
+        System.out.println("Created Record Name = " + text + " " + authorId + " " + blogId);
         return;
     }
 
@@ -47,9 +47,9 @@ public class CommentJDBCTemplate implements CommentDAO {
         return;
     }
 
-    public void update(Integer id, Integer age) {
-        String SQL = "update Comment set age = ? where id = ?";
-        jdbcTemplateObject.update(SQL, age, id);
+    public void update(Integer id, String text) {
+        String SQL = "update Comment set text = ? where id = ?";
+        jdbcTemplateObject.update(SQL, text, id);
         System.out.println("Updated Record with ID = " + id );
         return;
     }

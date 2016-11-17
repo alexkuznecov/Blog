@@ -18,11 +18,10 @@ public class BlogJDBCTemplate implements BlogDAO {
         this.jdbcTemplateObject = new JdbcTemplate(dataSource);
     }
 
-    public void create(String name, Integer age) {
-        String SQL = "insert into Student (name, age) values (?, ?)";
-
-        jdbcTemplateObject.update( SQL, name, age);
-        System.out.println("Created Record Name = " + name + " Age = " + age);
+    public void create(String name, String text, Integer authorId) {
+        String SQL = "insert into Blog (name, text, authorId) values (?, ?, ?)";
+        jdbcTemplateObject.update( SQL, name, text, authorId);
+        System.out.println("Created Record Name = " + name + " " + text + " " + authorId);
         return;
     }
 
@@ -47,9 +46,9 @@ public class BlogJDBCTemplate implements BlogDAO {
         return;
     }
 
-    public void update(Integer id, Integer age) {
-        String SQL = "update Blog set age = ? where id = ?";
-        jdbcTemplateObject.update(SQL, age, id);
+    public void update(Integer id, String name) {
+        String SQL = "update Blog set name = ? where id = ?";
+        jdbcTemplateObject.update(SQL, name, id);
         System.out.println("Updated Record with ID = " + id );
         return;
     }

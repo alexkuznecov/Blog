@@ -9,7 +9,7 @@ public interface CommentDAO {
 
     void setDataSource(DataSource ds);
 
-    void create(String name, Integer age);
+    void create(String name, Integer authorId, Integer blogId);
 
     Comment getComment(Integer id);
 
@@ -17,6 +17,6 @@ public interface CommentDAO {
 
     void delete(Integer id);
 
-    void update(Integer id, Integer age);
+    void update(Integer id, String text);
 
 }

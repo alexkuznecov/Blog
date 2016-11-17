@@ -9,7 +9,7 @@ public interface BlogDAO {
 
     void setDataSource(DataSource ds);
 
-    void create(String name, Integer age);
+    void create(String name, String text ,Integer authorId);
 
     Blog getBlog(Integer id);
 
@@ -17,5 +17,5 @@ public interface BlogDAO {
 
     void delete(Integer id);
 
-    void update(Integer id, Integer age);
+    void update(Integer id, String name);
 }
