@@ -19,7 +19,7 @@ public class CommentJDBCTemplate implements CommentDAO {
     }
 
     public void create(String text, Integer authorId, Integer blogId) {
-        String SQL = "insert into Comment (text, authorId, blogId) values (?, ?, ?)";
+        String SQL = "insert into comment (text, authorId, blogId) values (?, ?, ?)";
 
         jdbcTemplateObject.update(SQL, text, authorId, blogId);
         System.out.println("Created Record Name = " + text + " " + authorId + " " + blogId);
@@ -27,28 +27,28 @@ public class CommentJDBCTemplate implements CommentDAO {
     }
 
     public Comment getComment(Integer id) {
-        String SQL = "select * from Comment where id = ?";
+        String SQL = "select * from comment where id = ?";
         Comment comment = jdbcTemplateObject.queryForObject(SQL,
                 new Object[]{id}, new CommentMapper());
         return comment;
     }
 
     public List<Comment> listComment() {
-        String SQL = "select * from Comment";
+        String SQL = "select * from comment";
         List <Comment> comments = jdbcTemplateObject.query(SQL,
                 new CommentMapper());
         return comments;
     }
 
     public void delete(Integer id) {
-        String SQL = "delete from Comment where id = ?";
+        String SQL = "delete from comment where id = ?";
         jdbcTemplateObject.update(SQL, id);
         System.out.println("Deleted Record with ID = " + id );
         return;
     }
 
     public void update(Integer id, String text) {
-        String SQL = "update Comment set text = ? where id = ?";
+        String SQL = "update comment set text = ? where id = ?";
         jdbcTemplateObject.update(SQL, text, id);
         System.out.println("Updated Record with ID = " + id );
         return;

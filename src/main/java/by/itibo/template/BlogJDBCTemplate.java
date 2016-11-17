@@ -19,35 +19,35 @@ public class BlogJDBCTemplate implements BlogDAO {
     }
 
     public void create(String name, String text, Integer authorId) {
-        String SQL = "insert into Blog (name, text, authorId) values (?, ?, ?)";
+        String SQL = "insert into blog (name, text, authorId) values (?, ?, ?)";
         jdbcTemplateObject.update( SQL, name, text, authorId);
         System.out.println("Created Record Name = " + name + " " + text + " " + authorId);
         return;
     }
 
     public Blog getBlog(Integer id) {
-        String SQL = "select * from Blog where id = ?";
+        String SQL = "select * from blog where id = ?";
         Blog blog = jdbcTemplateObject.queryForObject(SQL,
                 new Object[]{id}, new BlogMapper());
         return blog;
     }
 
     public List<Blog> listBlog() {
-        String SQL = "select * from Blog";
+        String SQL = "select * from blog";
         List <Blog> blogs = jdbcTemplateObject.query(SQL,
                 new BlogMapper());
         return blogs;
     }
 
     public void delete(Integer id) {
-        String SQL = "delete from Blog where id = ?";
+        String SQL = "delete from blog where id = ?";
         jdbcTemplateObject.update(SQL, id);
         System.out.println("Deleted Record with ID = " + id );
         return;
     }
 
     public void update(Integer id, String name) {
-        String SQL = "update Blog set name = ? where id = ?";
+        String SQL = "update blog set name = ? where id = ?";
         jdbcTemplateObject.update(SQL, name, id);
         System.out.println("Updated Record with ID = " + id );
         return;

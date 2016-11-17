@@ -19,7 +19,7 @@ public class UserJDBCTemplate implements UserDAO {
     }
 
     public void create(String name, String surname, String login, String password) {
-        String SQL = "insert into User (name, surname, login, password) values (?, ?, ?, ?)";
+        String SQL = "insert into user (name, surname, login, password) values (?, ?, ?, ?)";
 
         jdbcTemplateObject.update( SQL, name, surname, login, password);
         System.out.println("Created Record Name = " + name + " " + surname + " " + login);
@@ -27,28 +27,28 @@ public class UserJDBCTemplate implements UserDAO {
     }
 
     public User getUser(Integer id) {
-        String SQL = "select * from User where id = ?";
+        String SQL = "select * from user where id = ?";
         User user = jdbcTemplateObject.queryForObject(SQL,
                 new Object[]{id}, new UserMapper());
         return user;
     }
 
     public List<User> listUsers() {
-        String SQL = "select * from Comment";
+        String SQL = "select * from user";
         List <User> users = jdbcTemplateObject.query(SQL,
                 new UserMapper());
         return users;
     }
 
     public void delete(Integer id) {
-        String SQL = "delete from User where id = ?";
+        String SQL = "delete from user where id = ?";
         jdbcTemplateObject.update(SQL, id);
         System.out.println("Deleted Record with ID = " + id );
         return;
     }
 
     public void update(Integer id, String name) {
-        String SQL = "update User set name = ? where id = ?";
+        String SQL = "update user set name = ? where id = ?";
         jdbcTemplateObject.update(SQL, name, id);
         System.out.println("Updated Record with ID = " + id );
         return;
