@@ -34,4 +34,16 @@ public class UserService {
         return users;
     }
 
+    public User getUserByLoginAndPassword(String login, String password) {
+
+        User user;
+
+        try {
+            user = userJDBCTemplate.getUserByLoginAndPassword(login, password);
+        } catch (Exception e) {
+            user = null;
+        }
+        return user;
+    }
+
 }

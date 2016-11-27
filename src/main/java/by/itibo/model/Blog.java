@@ -50,4 +50,12 @@ public class Blog {
     public void setAuthorId(Integer authorId) {
         this.authorId = authorId;
     }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
 }
