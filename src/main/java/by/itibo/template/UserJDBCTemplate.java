@@ -33,6 +33,13 @@ public class UserJDBCTemplate implements UserDAO {
         return user;
     }
 
+    public User getUserByLoginAndPassword(String login, String password) {
+        String SQL = "select * from user where login = ? and password = ?";
+        User user = jdbcTemplateObject.queryForObject(SQL,
+                new Object[]{login, password}, new UserMapper());
+        return user;
+    }
+
     public List<User> listUsers() {
         String SQL = "select * from user";
         List <User> users = jdbcTemplateObject.query(SQL,

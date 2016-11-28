@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <Console name="CONSOLE_APPENDER" target="SYSTEM_OUT">
+            <PatternLayout pattern="%highlight{%c{1}:%line [%p] %d{dd MMM yyyy HH:mm:ss:SSS} %m%n}{FATAL=darkred, ERROR=orange, WARN=pink, INFO=magenta, DEBUG=yellow, TRACE=green}"/>
+        </Console>
+    </Appenders>
+
+    <Loggers>
+
+        <Logger name="com.project" level="DEBUG" additivity="false">
+            <Appender-ref ref="CONSOLE_APPENDER"/>
+        </Logger>
+
+        <Root level="DEBUG">
+            <Appender-ref ref="CONSOLE_APPENDER"/>
+        </Root>
+    </Loggers>
+</Configuration>

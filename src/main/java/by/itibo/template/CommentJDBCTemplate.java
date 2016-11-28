@@ -54,4 +54,16 @@ public class CommentJDBCTemplate implements CommentDAO {
         return;
     }
 
+    public List<Comment> getCommentsByBlogId(Integer id) {
+        String SQL = "select * from comment where blogId = ?";
+        List<Comment> comments = jdbcTemplateObject.query(SQL, new CommentMapper(), id);
+        return comments;
+    }
+
+    public List<Comment> getCommentsByUserId(Integer id) {
+        String SQL = "select * from comment where userId = ?";
+        List<Comment> comments = jdbcTemplateObject.query(SQL, new CommentMapper(), id);
+        return comments;
+    }
+
 }

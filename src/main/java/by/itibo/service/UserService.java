@@ -2,6 +2,8 @@ package by.itibo.service;
 
 import by.itibo.model.User;
 import by.itibo.template.UserJDBCTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -10,6 +12,8 @@ import java.util.List;
 
 @Component(value = "userService")
 public class UserService {
+
+    private static final Logger LOG = LoggerFactory.getLogger(UserService.class);
 
     @Autowired
     private UserJDBCTemplate userJDBCTemplate;
@@ -32,6 +36,24 @@ public class UserService {
             users = new ArrayList<User>();
         }
         return users;
+    }
+
+    public User getUserByLoginAndPassword(String login, String password) {
+        User user;
+        try {
+            user = userJDBCTemplate.getUserByLoginAndPassword(login, password);
+        } catch (Exception e) {
+            user = null;
+        }
+        return user;
+    }
+
+    public void setUser(String name, String surname, String login, String password) {
+        try {
+            userJDBCTemplate.create(name, surname, login, password);
+        } catch (Exception e) {
+            LOG.error(e.toString());
+        }
     }
 
 }

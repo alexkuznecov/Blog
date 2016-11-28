@@ -19,4 +19,8 @@ public interface CommentDAO {
 
     void update(Integer id, String text);
 
+    List<Comment> getCommentsByBlogId(Integer id);
+
+    List<Comment> getCommentsByUserId(Integer id);
+
 }

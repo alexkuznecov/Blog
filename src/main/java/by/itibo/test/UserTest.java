@@ -15,7 +15,7 @@ public class UserTest {
 
         UserService userService = (UserService) context.getBean("userService");
 
-        User user = userService.getUserById(5);
+        User user = userService.getUserById(1);
 
         System.out.println(user.toString());
 
