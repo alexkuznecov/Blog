@@ -64,19 +64,20 @@ public class LoginBean
     * Результат проверки - наименование страницы перехода
     */
     public String checkLogin() {
-        ApplicationContext context =
-                new ClassPathXmlApplicationContext("applicationContext.xml");
-
         for (User user : us.getUsers()) {
             if (login.equalsIgnoreCase(user.getLogin()) && password.equalsIgnoreCase(user.getPassword())) {
                 name = user.getName();
                 surname = user.getSurname();
-                return "loginsuccess?faces-redirect=true";
+                return "main?faces-redirect=true";
             } else {
                 return "loginfailed?faces-redirect=true";
             }
         }
         return "Oops?faces-redirect=true";
+    }
+
+    public String returnLogin() {
+        return "login?faces-redirect=true";
     }
 
     public void setUs(UserService us) {

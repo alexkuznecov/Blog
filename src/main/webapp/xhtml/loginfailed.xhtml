@@ -10,6 +10,10 @@
 </h:head>
 
 <h:body>
-    <h:outputText value="Ошибка авторизации. Проверьте логин и пароль" />
+    <h:form>
+        <h:outputText value="Ошибка авторизации. Проверьте логин и пароль" />
+        <br/>
+        <h:commandButton value="Назад" action="#{Login.returnLogin}" />
+    </h:form>
 </h:body>
 </html>
