@@ -13,9 +13,9 @@
             <h:outputText value="Добро пожаловать: #{Login.name} #{Login.surname}!" />
             <h:dataTable value="#{Main.bloges}" var="blog">
                 <h:column>
-                    <h:link value="#{blog.name}" outcome="currentBlog">
+                    <h:commandLink value="#{blog.name}" action="#{Blog.createBlog}">
                         <f:param name="id" value="#{blog.id}" />
-                    </h:link>
+                    </h:commandLink>
                 </h:column>
             </h:dataTable>
         </h:form>
