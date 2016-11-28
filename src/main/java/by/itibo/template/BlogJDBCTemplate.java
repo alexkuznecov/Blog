@@ -32,13 +32,6 @@ public class BlogJDBCTemplate implements BlogDAO {
         return blog;
     }
 
-    public List<Blog> listBlog() {
-        String SQL = "select * from blog";
-        List <Blog> blogs = jdbcTemplateObject.query(SQL,
-                new BlogMapper());
-        return blogs;
-    }
-
     public void delete(Integer id) {
         String SQL = "delete from blog where id = ?";
         jdbcTemplateObject.update(SQL, id);
@@ -51,5 +44,18 @@ public class BlogJDBCTemplate implements BlogDAO {
         jdbcTemplateObject.update(SQL, name, id);
         System.out.println("Updated Record with ID = " + id );
         return;
+    }
+
+    public List<Blog> getBlogs() {
+        String SQL = "select * from blog";
+        List<Blog> blogs = jdbcTemplateObject.query(SQL, new BlogMapper());
+        return blogs;
+    }
+
+    public Blog getBlogByText(String text) {
+        String SQL = "select * from blog where text = ?";
+        Blog blog = jdbcTemplateObject.queryForObject(SQL,
+                new Object[]{text}, new BlogMapper());
+        return blog;
     }
 }

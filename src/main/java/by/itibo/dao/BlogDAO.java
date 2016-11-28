@@ -13,7 +13,9 @@ public interface BlogDAO {
 
     Blog getBlog(Integer id);
 
-    List<Blog> listBlog();
+    List<Blog> getBlogs();
+
+    Blog getBlogByText(String text);
 
     void delete(Integer id);
 

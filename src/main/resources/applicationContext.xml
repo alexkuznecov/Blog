@@ -17,11 +17,15 @@
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="org.sqlite.JDBC" />
         <property name="url" value="jdbc:sqlite:../webapps/ROOT/WEB-INF/classes/blogs.db" />
+        <!--Если хочешь что бы работали тесты, то нужно заменить урл базы на-->
+        <!--jdbc:sqlite:blogs.db"-->
     </bean>
 
     <bean id="userService" class="by.itibo.service.UserService" />
 
     <bean id="blogService" class="by.itibo.service.BlogService" />
+
+    <bean id="commentService" class="by.itibo.service.CommentService" />
 
     <bean id="userJDBCTemplate"
           class="by.itibo.template.UserJDBCTemplate">
