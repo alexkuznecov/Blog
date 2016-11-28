@@ -18,7 +18,7 @@ import java.util.List;
 @SessionScoped             // определение времени жизни - сессия
 public class LoginBean
 {
-    @ManagedProperty("#{UserService}")
+    @ManagedProperty("#{userService}")
     private UserService us;
 
     private String login;
