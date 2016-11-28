@@ -10,7 +10,7 @@ import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
 import java.util.List;
 
-@ManagedBean(name="Blog") // определение managed bean и его наименования
+@ManagedBean(name="Main") // определение managed bean и его наименования
 @SessionScoped
 public class MainBean {
 

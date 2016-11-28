@@ -11,7 +11,7 @@
     <h:body>
         <h:form>
             <h:outputText value="Добро пожаловать: #{Login.name} #{Login.surname}!" />
-            <h:dataTable value="#{Blog.bloges}" var="blog">
+            <h:dataTable value="#{Main.bloges}" var="blog">
                 <h:column>
                     <h:link value="#{blog.name}" outcome="currentBlog">
                         <f:param name="id" value="#{blog.id}" />
