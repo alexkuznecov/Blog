@@ -5,7 +5,7 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-    <title>Страница авторизации</title>
+    <title>Страница регистрации</title>
 </h:head>
 
 <h:body>
@@ -15,9 +15,12 @@
             <h:inputText value="#{Login.login}" />
             <h:outputText value="Пароль"/>
             <h:inputSecret value="#{Login.password}" />
+            <h:outputText value="Имя"/>
+            <h:inputText value="#{Login.name}" />
+            <h:outputText value="Фамилия"/>
+            <h:inputText value="#{Login.surname}" />
         </h:panelGrid>
-        <h:commandButton value="Вход" action="#{Login.checkLogin}" />
-        <h:commandButton value="Регистрация" action="#{Login.gotoRegister}" />
+        <h:commandButton value="Регистрация" action="#{Login.Registration}" />
     </h:form>
 </h:body>
 </html>

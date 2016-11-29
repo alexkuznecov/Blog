@@ -65,7 +65,7 @@ public class LoginBean
     */
     public String checkLogin() {
         for (User user : us.getUsers()) {
-            if (login.equalsIgnoreCase(user.getLogin()) && password.equalsIgnoreCase(user.getPassword())) {
+            if (us.getUserByLoginAndPassword(login,password)!=null) {
                 name = user.getName();
                 surname = user.getSurname();
                 return "main?faces-redirect=true";
@@ -77,6 +77,19 @@ public class LoginBean
     }
 
     public String returnLogin() {
+        return "login?faces-redirect=true";
+    }
+
+    public String gotoRegister() {
+        return "register?faces-redirect=true";
+    }
+
+    public String Registration() {
+        for (User user: us.getUsers()) {
+            if (user.getName().equals(name) && user.getSurname().equals(surname) || user.getLogin().equals(login))
+                return "Oops?faces-redirect=true";
+        }
+        us.setUser(name,surname,login,password);
         return "login?faces-redirect=true";
     }
 
