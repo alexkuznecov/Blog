@@ -65,17 +65,15 @@ private UserService us;
     * Результат проверки - наименование страницы перехода
     */
     public String checkLogin() {
-        for (User user : us.getUsers()) {
-            if (us.getUserByLoginAndPassword(login,password)!=null) {
-                name = user.getName();
-                surname = user.getSurname();
-                id = user.getId();
-                return "main?faces-redirect=true";
-            } else {
-                return "loginfailed?faces-redirect=true";
-            }
+        User user = us.getUserByLoginAndPassword(login,password);
+        if (user != null) {
+            name = user.getName();
+            surname = user.getSurname();
+            id = user.getId();
+            return "main?faces-redirect=true";
+        } else {
+            return "loginfailed?faces-redirect=true";
         }
-        return "Oops?faces-redirect=true";
     }
 
     public String returnLogin() {
