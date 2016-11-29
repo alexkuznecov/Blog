@@ -30,16 +30,16 @@ public class BlogBean {
 
     public String createBlog() {
         Blog blog = bs.getBlogById(Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id")));
-        name = blog.getName().replace("\"","");
+        name = blog.getName();
         text = blog.getText();
         author = us.getUserById(blog.getAuthorId()).getName() + us.getUserById(blog.getAuthorId()).getSurname();
         comments = blog.getComments();
         return "currentBlog?faces-redirect=true";
     }
 
-//    public String returnToMain() {
-//        return "main?faces-redirect=true";
-//    }
+    public String returnToMain() {
+        return "main?faces-redirect=true";
+    }
 
     public void setBs(BlogService bs) {
         this.bs = bs;

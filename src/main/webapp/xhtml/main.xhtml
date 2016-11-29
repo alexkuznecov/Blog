@@ -11,6 +11,10 @@
     <h:body>
         <h:form>
             <h:outputText value="Добро пожаловать: #{Login.name} #{Login.surname}!" />
+            <br/>
+            <h:commandButton value="Аккаунт" action="#{User.userView}">
+                <f:param name="id" value="#{Login.id}" />
+            </h:commandButton>
             <h:dataTable value="#{Main.bloges}" var="blog">
                 <h:column>
                     <h:commandLink value="#{blog.name}" action="#{Blog.createBlog}">

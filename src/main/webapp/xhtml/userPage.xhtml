@@ -6,23 +6,17 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:c="http://java.sun.com/jstl/core">
 <h:head>
-    <title>"#{Blog.name}"</title>
+    <title>User Page</title>
 </h:head>
-
 <h:body>
     <h:form>
-        <!--why not working outputtext???-->
-        <h3>#{Blog.name}</h3>
-        #{Blog.text}
+        <h:outputText value="#{User.name}" />
         <br/>
-        #{Blog.author}
+        <h:outputText value="#{User.surname}" />
         <br/>
-        <h:dataTable value="#{Blog.comments}" var="comment">
-            <h:column>
-                #{comment.text}
-            </h:column>
-        </h:dataTable>
-        <h:commandButton value="Назад" action="#{Blog.returnToMain}" />
+        <h:outputText value="#{User.login}" />
+        <br/>
+        <h:commandButton value="Назад" action="#{User.returnToMain}" />
     </h:form>
 </h:body>
 </html>

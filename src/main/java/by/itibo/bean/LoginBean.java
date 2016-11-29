@@ -19,8 +19,9 @@ import java.util.List;
 public class LoginBean
 {
     @ManagedProperty("#{userService}")
-    private UserService us;
+private UserService us;
 
+    private int id;
     private String login;
     private String password;
     private String name;
@@ -68,6 +69,7 @@ public class LoginBean
             if (us.getUserByLoginAndPassword(login,password)!=null) {
                 name = user.getName();
                 surname = user.getSurname();
+                id = user.getId();
                 return "main?faces-redirect=true";
             } else {
                 return "loginfailed?faces-redirect=true";
@@ -95,5 +97,13 @@ public class LoginBean
 
     public void setUs(UserService us) {
         this.us = us;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
