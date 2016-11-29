@@ -56,4 +56,16 @@ public class UserService {
         }
     }
 
+    public Boolean getUserByLogin(String login) {
+        Boolean retVal = false;
+        try {
+            if (userJDBCTemplate.getUserByLogin(login) != null) {
+                retVal = true;
+            }
+        } catch (Exception e) {
+            LOG.error(e.toString());
+        }
+        return retVal;
+    }
+
 }
