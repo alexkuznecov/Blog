@@ -17,6 +17,7 @@
         <br/>
         #{Blog.author}
         <br/>
+        <h:outputText id="out1" value="#{Blog.text}" />
         <h:dataTable value="#{Blog.comments}" var="comment">
             <h:column>
                 #{comment.text}
