@@ -17,11 +17,14 @@
             </h:commandButton>
             <h:dataTable value="#{Main.bloges}" var="blog">
                 <h:column>
-                    <h:commandLink value="#{blog.name}" action="#{Blog.createBlog}">
+                    <h:commandLink value="#{blog.name}" action="#{Blog.viewBlog}">
                         <f:param name="id" value="#{blog.id}" />
                     </h:commandLink>
                 </h:column>
             </h:dataTable>
+            <h:commandButton value="Добавить" action="#{Blog.gotoNewBean}" >
+                <f:param name="id" value="#{Login.id}" />
+            </h:commandButton>
         </h:form>
     </h:body>
 </html>

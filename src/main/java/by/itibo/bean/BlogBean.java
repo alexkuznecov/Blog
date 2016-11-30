@@ -2,6 +2,7 @@ package by.itibo.bean;
 
 import by.itibo.model.Blog;
 import by.itibo.model.Comment;
+import by.itibo.model.User;
 import by.itibo.service.BlogService;
 import by.itibo.service.UserService;
 
@@ -23,12 +24,13 @@ public class BlogBean {
     @ManagedProperty("#{userService}")
     private UserService us;
 
+    private int id;
     private String name;
     private String text;
     private String author;
     private List<Comment> comments;
 
-    public String createBlog() {
+    public String viewBlog() {
         Blog blog = bs.getBlogById(Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id")));
         name = blog.getName();
         text = blog.getText();
@@ -37,8 +39,19 @@ public class BlogBean {
         return "currentBlog?faces-redirect=true";
     }
 
+    public String newBlog() {
+        User user = us.getUserById(id);
+        bs.createBlogWithoutComments(name,text,user.getId());
+        return "main?faces-redirect=true";
+    }
+
     public String returnToMain() {
         return "main?faces-redirect=true";
+    }
+
+    public String gotoNewBean() {
+        id = Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id"));
+        return "newBlog?faces-redirect=true";
     }
 
     public void setBs(BlogService bs) {
@@ -81,4 +94,11 @@ public class BlogBean {
         this.author = author;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }
